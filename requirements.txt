@@ -1,0 +1,7 @@
+
+yfinance
+matplotlib.pyplot
+prophet
+prophet.plot
+plotly
+pandas

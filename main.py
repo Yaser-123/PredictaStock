@@ -16,7 +16,7 @@ st.title('Stock Forecast App')
 
 # Select stock from dropdown
 stocks = ('GOOG', 'AAPL', 'MSFT', 'GME')
-selected_stock = st.selectbox('Select dataset for prediction', stocks)
+selected_stock = st.text_input('Enter Stock Ticker (e.g., GOOG, AAPL, TSLA):', value='GOOG')
 
 n_years = st.slider('Years of prediction:', 1, 4)
 period = n_years * 365

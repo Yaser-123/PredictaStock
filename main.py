@@ -43,9 +43,6 @@ def plot_time_series():
     open_column = [col for col in data.columns if 'Open' in col][0]
     close_column = [col for col in data.columns if 'Close' in col][0]
 
-    st.write(f"Open column detected: {open_column}")
-    st.write(f"Close column detected: {close_column}")
-
     try:
         # Drop rows with NaN in Open or Close
         clean_data = data.dropna(subset=[open_column, close_column])

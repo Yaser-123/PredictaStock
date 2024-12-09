@@ -36,6 +36,68 @@ data_load_state.text('Loading data... done!')
 st.subheader('Raw Data')
 st.write(data.tail())
 
+def Candlestick_Chart():
+    try:
+        # Dynamically find the required columns
+        open_column = [col for col in data.columns if 'Open' in col][0]
+        high_column = [col for col in data.columns if 'High' in col][0]
+        low_column = [col for col in data.columns if 'Low' in col][0]
+        close_column = [col for col in data.columns if 'Close' in col][0]
+        date_column = [col for col in data.columns if 'Date' in col][0]
+
+        # Drop rows with NaN in the required columns
+        clean_data = data.dropna(subset=[open_column, high_column, low_column, close_column, date_column])
+
+        if clean_data.empty:
+            st.warning("No valid data available for the candlestick chart.")
+            return
+
+        # Plot the candlestick chart
+        fig = go.Figure(data=[go.Candlestick(
+            x=clean_data[date_column],
+            open=clean_data[open_column],
+            high=clean_data[high_column],
+            low=clean_data[low_column],
+            close=clean_data[close_column],
+            increasing_line_color='green',
+            decreasing_line_color='red'
+        )])
+
+        # Update layout with X-axis slider (range slider feature)
+        fig.update_layout(
+            title=f"{selected_stock} Candlestick Chart",
+            xaxis_title='Date',
+            yaxis_title='Price',
+            xaxis=dict(
+                rangeselector=dict(
+                    buttons=list([
+                        dict(count=1, label="1m", step="month", stepmode="backward"),
+                        dict(count=3, label="3m", step="month", stepmode="backward"),
+                        dict(count=6, label="6m", step="month", stepmode="backward"),
+                        dict(count=1, label="1y", step="year", stepmode="backward"),
+                        dict(label="YTD", step="year", stepmode="todate"),
+                        dict(label="All", step="all")
+                    ])
+                ),
+                rangeslider=dict(visible=True),  # Shows the X-axis slider
+                type="date"
+            ),
+            template="plotly_dark"
+        )
+
+        st.plotly_chart(fig)
+
+    except IndexError:
+        st.error("One or more required columns (Open, High, Low, Close, Date) are missing in the data.")
+    except Exception as e:
+        st.error(f"An error occurred while creating the candlestick chart: {e}")
+
+
+# Subheading for visualization
+st.subheader('Candlestick Chart')
+Candlestick_Chart()
+
+
 
 # Plot time series data with matplotlib
 def plot_time_series():

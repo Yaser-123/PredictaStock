@@ -136,3 +136,24 @@ st.plotly_chart(fig1)
 st.write("Forecast components")
 fig2 = m.plot_components(forecast)
 st.write(fig2)
+
+# Add Social Sharing Buttons
+st.subheader("Share Your Analysis")
+social_buttons_html = """
+<div style="display: flex; gap: 10px;">
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https://predictastock.streamlit.app/&quote=Check%20out%20this%20amazing%20Stock%20Prediction%20App!%20📈🔥" target="_blank">
+        <button style="background-color:#3b5998;color:white;border:none;padding:10px 20px;border-radius:5px;">Share on Facebook</button>
+    </a>
+    <a href="https://www.linkedin.com/shareArticle?url=https://predictastock.streamlit.app/&title=Amazing%20Stock%20Prediction%20App!&summary=Get%20accurate%20stock%20predictions%20and%20analyze%20trends%20with%20our%20tool.%20Try%20it%20now!" target="_blank">
+        <button style="background-color:#0077b5;color:white;border:none;padding:10px 20px;border-radius:5px;">Share on LinkedIn</button>
+    </a>
+    <a href="https://twitter.com/intent/tweet?text=Check%20out%20this%20amazing%20Stock%20Prediction%20App!%20📈🔥&url=https://predictastock.streamlit.app/" target="_blank">
+        <button style="background-color:#1DA1F2;color:white;border:none;padding:10px 20px;border-radius:5px;">Share on Twitter</button>
+    </a>
+    <a href="https://www.instagram.com/" target="_blank">
+        <button style="background-color:#bc2a8d;color:white;border:none;padding:10px 20px;border-radius:5px;">Share on Instagram</button>
+    </a>
+</div>
+"""
+st.markdown(social_buttons_html, unsafe_allow_html=True)
+

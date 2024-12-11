@@ -56,13 +56,13 @@
 ## Screenshots
 
 ### Dashboard
-![Dashboard Placeholder](images/dashboard.png)
+![Dashboard Placeholder](Images/img-1.png)
 
 ### Time Series Chart
-![Time Series Chart Placeholder](images/time_series_chart.png)
+![Time Series Chart Placeholder](Images/img-2.png)
 
 ### Prediction Graph
-![Prediction Graph Placeholder](images/prediction_graph.png)
+![Prediction Graph Placeholder](Images/img-3.png)
 
 ---
 
